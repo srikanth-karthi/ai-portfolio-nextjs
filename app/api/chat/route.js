@@ -1,6 +1,5 @@
-import {  CohereClientV2 } from "cohere-ai";
+import { CohereClientV2 } from "cohere-ai";
 import { DataAPIClient } from "@datastax/astra-db-ts";
-
 
 const cohere = new CohereClientV2({
   token: process.env.COHERE_API_KEY,
@@ -10,8 +9,6 @@ const client = new DataAPIClient(process.env.ASTRA_DB_APPLICATION_TOKEN);
 const db = client.db(process.env.ASTRA_DB_API_ENDPOINT, {
   namespace: process.env.ASTRA_DB_NAMESPACE,
 });
-
-
 
 export async function POST(req) {
   try {
@@ -24,8 +21,6 @@ export async function POST(req) {
       embeddingTypes: ['float'],
       texts: [latestMessage],
     });
-
-
 
     const collection = db.collection("portfolio");
     const cursor = collection.find(null, {
@@ -49,21 +44,19 @@ export async function POST(req) {
       END CONTEXT
     `;
 
-
-const ragPrompt = [
-  {
-    role: "system",
-    content: `
+    const ragPrompt = [
+      {
+        role: "system",
+        content: `
           You are an AI assistant answering questions as Srikanth in his Portfolio App. 
           Format responses using markdown where applicable.
           ${docContext}
           If the answer is not provided in the context, the AI assistant will say, 
           "I'am sorry, I do not know the answer".
-          `,
-  },
-];
+        `,
+      },
+    ];
 
-    
     const response = await cohere.chat({
       model: "command", 
       messages: [...ragPrompt, ...[messages[messages.length - 1]]],

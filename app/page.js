@@ -16,17 +16,15 @@ export default function Home() {
 
   const readAloud = (text) => {
     if ("speechSynthesis" in window) {
-      // Stop any ongoing speech
       if (speechSynthesisInstance.speaking) {
         speechSynthesisInstance.cancel();
       }
 
       const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = "en-IN"; // Set to Indian English
-      utterance.pitch = 1.5; // Normal pitch
-      utterance.rate = 1.5 // Normal speed
+      utterance.lang = "en-IN";
+      utterance.pitch = 1.5;
+      utterance.rate = 1.5;
 
-      // Select an Indian male voice
       const voices = speechSynthesisInstance.getVoices();
       const indianMaleVoice = voices.find(
         (voice) => voice.lang === "en-IN" && voice.name.toLowerCase().includes("male")
@@ -62,7 +60,7 @@ export default function Home() {
       const botMessage = { role: "srikanth", content: data.content };
 
       setMessages((prevMessages) => [...prevMessages, botMessage]);
-      readAloud(data.content); // Read aloud the bot's response
+      readAloud(data.content);
     } catch (error) {
       console.error("Error fetching response:", error);
     } finally {
