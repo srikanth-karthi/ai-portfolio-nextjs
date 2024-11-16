@@ -1,0 +1,63 @@
+[
+  {
+    "id": 1,
+    "info": "Srikanth Karthikeyan",
+    "description": 
+      " I am a highly skilled full-stack developer and cloud and migration engineer, currently working as an Associate Software Engineer at Presidio. With a strong foundation in both front-end and back-end development, I specialize in designing and developing scalable web applications, utilizing modern technologies and frameworks. My expertise extends to cloud technologies, where I contribute to the migration of applications to cloud platforms such as AWS and Azure, ensuring optimal performance and scalability. I also work on automating cloud infrastructure with tools like Terraform, further enhancing the efficiency of cloud deployments. My hands-on experience with technologies like Node.js, Express.js, and various databases positions me as a valuable asset to the engineering team at Presidio, where I continually deliver high-quality solutions to complex technical challenges."
+    
+  },
+  {
+    "id": 2,
+    "info": "Current Role",
+    "description": 
+      " I am currently working as an Associate Software Engineer at Presidio, where I am involved in cloud and migration projects. My responsibilities include building and maintaining scalable infrastructure using cloud platforms like AWS and Azure, along with automating and managing infrastructure with Terraform. I actively contribute to the migration of applications to the cloud, ensuring seamless transitions and optimized performance. Additionally, I collaborate with cross-functional teams to design and implement backend systems, ensuring their scalability and efficiency. My role also involves troubleshooting and resolving technical challenges to deliver high-quality solutions to clients"
+    
+  },
+  {
+    "id": 3,
+    "info": "Education",
+    "description": "I completed my BE in Electronics and Communication Engineering from Sri Krishna College of Technology, Coimbatore (2020 – 2024), achieving a CGPA of 8.37. Prior to that, I completed my HSC from Thamarai Matric Higher Secondary School, Erode (2018 – 2020), with a percentage of 81.6%. I also completed my SSLC from Thamarai Matric Higher Secondary School, Erode (2017 – 2018), scoring a percentage of 89.2%"
+  },
+  {
+    "id": 4,
+    "info": "Skills",
+    "description": "I am proficient in front-end technologies such as HTML, CSS, and JavaScript, along with modern frameworks like React and Angular for building dynamic, responsive web applications. I have strong backend development experience with Node.js, Express.js, MongoDB, MySQL, and Java, allowing me to create scalable and efficient server-side systems. Additionally, I am skilled in cloud technologies like AWS, Azure, and Terraform, along with Linux for system administration, and .NET Web APIs for building robust and secure APIs."
+  },
+  {
+    "id": 5,
+    "info": "Key Projects",
+    "description": "I developed Uzhavan House, a comprehensive agricultural e-commerce platform designed to provide secure user login, manage product inventories, and facilitate seller interactions; created the Online Compiler, an intuitive platform enabling users to write, compile, and execute code in multiple programming languages directly from their browser; and built the Language Translator, a user-friendly web application that offers real-time translation of text between various languages, ensuring easy communication across language barriers."
+  },
+  {
+    "id": 6,
+    "info": "Internship",
+    "description": "At Kanavu Startup Village, I worked as an SEO Intern, gaining expertise in optimizing web content to improve search engine rankings. I also served as a Backend Engineer on an enterprise construction management application, where I focused on developing and enhancing backend systems to support seamless operations. At Presidio, as an Associate Software Engineer from Apr 2024 to Sep 2024, I gained hands-on experience working with technologies such as ASP.NET, Microsoft Azure, Microsoft SQL Server, REST APIs, .NET Framework, Docker, and Python. My role involved contributing to the development, optimization, and management of backend systems and cloud infrastructure, ensuring that enterprise applications were scalable, efficient, and optimized for performance."
+  },
+  {
+    "id": 7,
+    "info": "Volunteerism",
+    "description": "As an NSS Volunteer at Thamarai Matric Higher Secondary School, I actively contributed to various community service initiatives, helping organize and participate in programs aimed at supporting the local community. I also serve as a Blood Donor at Ramakrishna Hospital, where I regularly donate blood to help cancer patients and others in need. Additionally, I worked as the Social Media Coordinator for the Chithiram Club at college, where I was responsible for promoting events, managing social media campaigns, and engaging with the college community to increase participation in club initiatives."
+  },
+  {
+    "id": 8,
+    "info": "Certifications",
+    "description": "I completed the Effective Writing course through NPTEL in 2021, which helped me master the principles of clear and concise writing. In 2022, I pursued the Ethics in Engineering course through NPTEL, gaining a deeper understanding of ethical practices in engineering. Additionally, I earned the Cloud and Virtualization certification from IT Academy (issued in October 2022) and the Introduction to Cybersecurity certification from Cisco (issued in July 2023). I also graduated as an AWS Academy Cloud Foundations student from AWS Academy at NED University, completing this certification in July 2023."
+  },
+  {
+    "id": 9,  
+    "info": "Contact",
+    "description": "I can be reached at srikanthkarthi2003@gmail.com, or via +91 93458 10993. You can connect with me on LinkedIn at linkedin.com/in/srikanth-karthikeyan, and check out my work on GitHub at github.com/srikanth-karthi and my Portfolio at dev-srikanth-portfolio.netlify.app. I am also available on Facebook facebook.com/srikanth.karthikeyan.73, Instagram instagram.com/srikanth_karthikeyan_, and Medium medium.com/@srikanthkarthi2003. You can view my coding profiles on LeetCode leetcode.com/srikanthkarthi2003 and HackerRank hackerrank.com/profile/srikanthkarthi21. I reside in Chinnaveerasangili, Sivigiri, Erode, Tamil Nadu, India, with a PIN Code of 638109."
+  },
+  {
+    "id": 10,
+    "info": "Articles",
+    "description": "I write about simplifying identity management with Azure and AWS, explore why Cloudflare uses lava lamps for encryption, and break down key system design acronyms like CAP, BASE, and KISS. For more insights, read the full articles on my LinkedIn profile: https://www.linkedin.com/in/srikanth-karthikeyan/recent-activity/articles/"
+  },
+  {
+    "id": 11,
+    "info": "Languages",
+    "description": "I am proficient in English with full professional proficiency, in Hindi with elementary proficiency, and I am a native speaker of Tamil."
+  }
+  
+  
+]
