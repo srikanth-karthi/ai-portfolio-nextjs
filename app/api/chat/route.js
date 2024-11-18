@@ -56,15 +56,36 @@ export async function POST(req) {
         `,
       },
     ];
+    // console.log("POST ~ ragPrompt:", ragPrompt);
 
-    const response = await cohere.chat({
-      model: "command", 
-      messages: [...ragPrompt, ...[messages[messages.length - 1]]],
+    // const response = await cohere.chat({
+    //   model: "command", 
+    //   messages: [...ragPrompt, ...[messages[messages.length - 1]]],
+    // });
+
+    const groqPrompt = [...ragPrompt, { role: "user", content: latestMessage }];
+    console.log("POST ~ groqPrompt:", groqPrompt);
+
+    // Step 5: Send Request to Groq API
+    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.GROQ_API_KEY}`,
+      },
+      body: JSON.stringify({
+        model: "llama3-8b-8192", // Groq model to use
+        messages: groqPrompt,
+      }),
     });
+
+    const jsonResponse = await response.json();
+   const  generatedMessage = jsonResponse.choices[0].message.content;
+    console.log("POST ~ jsonResponse:", generatedMessage);
 
     return Response.json({
       role: "Srikanth",
-      content: response.message.content[0].text,
+      content: generatedMessage,
     });
 
   } catch (e) {
