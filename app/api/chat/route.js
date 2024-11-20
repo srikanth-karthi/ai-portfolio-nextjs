@@ -21,6 +21,7 @@ export async function POST(req) {
       embeddingTypes: ['float'],
       texts: [latestMessage],
     });
+    console.log("POST ~ embeddings:", embeddings);
 
     const collection = db.collection("portfolio");
     const cursor = collection.find(null, {

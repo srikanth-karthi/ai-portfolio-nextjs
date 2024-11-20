@@ -14,31 +14,31 @@ export default function Home() {
     setInput(e.target.value);
   };
 
-  const readAloud = (text) => {
-    if ("speechSynthesis" in window) {
-      if (speechSynthesisInstance.speaking) {
-        speechSynthesisInstance.cancel();
-      }
+  // const readAloud = (text) => {
+  //   if ("speechSynthesis" in window) {
+  //     if (speechSynthesisInstance.speaking) {
+  //       speechSynthesisInstance.cancel();
+  //     }
 
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = "en-IN";
-      utterance.pitch = 1.5;
-      utterance.rate = 1.5;
+  //     const utterance = new SpeechSynthesisUtterance(text);
+  //     utterance.lang = "en-IN";
+  //     utterance.pitch = 1.5;
+  //     utterance.rate = 1.5;
 
-      const voices = speechSynthesisInstance.getVoices();
-      const indianMaleVoice = voices.find(
-        (voice) => voice.lang === "en-IN" && voice.name.toLowerCase().includes("male")
-      );
+  //     const voices = speechSynthesisInstance.getVoices();
+  //     const indianMaleVoice = voices.find(
+  //       (voice) => voice.lang === "en-IN" && voice.name.toLowerCase().includes("male")
+  //     );
 
-      if (indianMaleVoice) {
-        utterance.voice = indianMaleVoice;
-      }
+  //     if (indianMaleVoice) {
+  //       utterance.voice = indianMaleVoice;
+  //     }
 
-      speechSynthesisInstance.speak(utterance);
-    } else {
-      console.warn("Text-to-speech is not supported in this browser.");
-    }
-  };
+  //     speechSynthesisInstance.speak(utterance);
+  //   } else {
+  //     console.warn("Text-to-speech is not supported in this browser.");
+  //   }
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
