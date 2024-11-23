@@ -1,15 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useState,useEffect,useRef } from "react";
 import Image from "next/image";
 
 export default function Home() {
   const [messages, setMessages] = useState([]);
+  const [followUpQuestion, setfollowUpQuestion] = useState('Who are you');
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
+  const bottomOfChat = useRef(null);
   let speechSynthesisInstance = window.speechSynthesis;
-
+  useEffect(() => {
+    bottomOfChat.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
   const handleInputChange = (e) => {
     setInput(e.target.value);
   };
@@ -39,34 +42,71 @@ export default function Home() {
   //     console.warn("Text-to-speech is not supported in this browser.");
   //   }
   // };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!input.trim()) return;
-
+  
     const newMessage = { role: "user", content: input };
     setMessages((prevMessages) => [...prevMessages, newMessage]);
     setInput("");
     setIsLoading(true);
-
+  
     try {
       const res = await fetch("/api/chat", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json",
+        },
         body: JSON.stringify({ messages: [...messages, newMessage] }),
       });
-
-      const data = await res.json();
-      const botMessage = { role: "srikanth", content: data.content };
-
-      setMessages((prevMessages) => [...prevMessages, botMessage]);
-      readAloud(data.content);
+  
+      if (!res.ok) {
+        throw new Error("Failed to fetch response from server");
+      }
+  
+      const content = await res.json();
+      console.log("handleSubmit ~ content:", content);
+  
+      if (content && content.role === 'Srikanth' && Array.isArray(content.content)) {
+        const contentText = content.content.join(' ');
+        console.log("handleSubmit ~ contentText:", contentText);
+  
+        // Extracting the follow-up question with a regex
+        const followUpMatch = contentText.match(/Follow-up question: (.+)/);
+        let followUp = "No follow-up question";
+  
+        if (followUpMatch && followUpMatch[1]) {
+          followUp = followUpMatch[1].trim(); // Extract the question part after "Follow-up question:"
+        }
+  
+        console.log("Updated follow-up question:", followUp);
+  
+        // Set the follow-up question in the state
+        setfollowUpQuestion(followUp);
+  
+        // Now split the content to handle the answer part
+        const splitResponse = contentText.split("Follow-up question:");
+        const answer = splitResponse[0].trim();
+  
+        const botMessage = { role: "srikanth", content: answer };
+        setMessages((prevMessages) => [...prevMessages, botMessage]);
+  
+        // Optionally, use readAloud for speech
+        readAloud(contentText);
+      } else {
+        console.error("Unexpected response structure:", content);
+      }
     } catch (error) {
       console.error("Error fetching response:", error);
     } finally {
       setIsLoading(false);
     }
   };
+  
+  
+  useEffect(() => {
+    console.log("Updated follow-up question:", followUpQuestion);
+  }, [followUpQuestion]);
+  
 
   const noMessages = messages.length === 0;
 
@@ -83,7 +123,8 @@ export default function Home() {
           Srikanth&rsquo;s AI Portfolio
         </h1>
 
-        <section className="w-full flex-1 flex flex-col overflow-y-scroll">
+        <section className="w-full flex-1 flex flex-col overflow-y-hidden">
+
           {noMessages ? (
             <p className="text-center text-xl">Ask me Anything</p>
           ) : (
@@ -105,8 +146,12 @@ export default function Home() {
               {isLoading && <span className="ml-auto">Thinking... 🤔</span>}
             </>
           )}
+           <div ref={bottomOfChat} />
         </section>
-
+        <div className="w-full mt-5 p-4 bg-blue-100 text-center rounded-lg shadow-md">
+      <p className="text-xl text-blue-700">{followUpQuestion}</p>
+  
+    </div>
         <form className="w-full flex gap-2" onSubmit={handleSubmit}>
           <input
             onChange={handleInputChange}
